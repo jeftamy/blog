@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css'
+
 const pageTitle = "About Me"
 
 const identity = {
@@ -9,6 +11,10 @@ const identity = {
 
 const happy = true
 const goal = 3
+
+const footColor = "green"
+const footWeight = "bold"
+const footTrans = "capitalize"
 ---
 
 <html lang="en">
@@ -18,7 +24,18 @@ const goal = 3
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+    <title>{pageTitle}</title>    
+    <style define:vars={{footColor, footWeight, footTrans}}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }  
+      .foot {
+        color: var(--footColor);
+        font-weight: var(--footWeight);
+        text-transform:  var(--footTrans);
+      }
+    </style>
 	</head>
   <body>
     <a href="/">Home</a>
@@ -41,7 +58,7 @@ const goal = 3
       }
     </ul>
 
-    {happy && <p>I am happy to be learning Astro!</p>}
-    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+    {happy && <p class="foot">I am happy to be learning Astro!</p>}
+    {goal === 3 ? <p class="foot">My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
 	</body>
 </html>
